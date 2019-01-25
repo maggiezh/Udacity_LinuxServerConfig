@@ -39,9 +39,9 @@ This project is the last project of Udacity Full Stack Web Developer Nanodegree 
     * sudo vi /etc/ssh/sshd_config
     * update the port number from 22 to 2200 in /etc/ssh/sshd_config.
 4. Configure the Uncomplicated Firewall (UFW) to only allow incoming connections for SSH (port 2200),        HTTP (port 80), and NTP (port 123).
-    * Deny incoming traffic, open outgoing traffic__
-        sudo ufw default deny incoming__
-        sudo ufw default allow outgoing__
+    * Deny incoming traffic, open outgoing traffic<br/>
+        sudo ufw default deny incoming<br/>
+        sudo ufw default allow outgoing<br/>
     * Open incoming connections for ssh, http and ntp:
         sudo ufw allow 2200/tcp
         sudo ufw allow www
