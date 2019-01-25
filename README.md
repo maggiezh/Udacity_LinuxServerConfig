@@ -35,7 +35,7 @@ This project is the last project of Udacity Full Stack Web Developer Nanodegree 
         IV. chmod 644 .ssh/authorized_keys
     * login to server using the private key and the passphrase:
         sudo ssh grader@34.194.172.98 -p 22 -i /root/.ssh/linuxCourse
-3. Change the SSH port from 22 to 2200:
+3. Change the SSH port from 22 to 2200, before testing the access via 2200, don't delete port 22
     * sudo vi /etc/ssh/sshd_config
     * update the port number from 22 to 2200 in /etc/ssh/sshd_config.
     * restart ssh: sudo service ssh restart
@@ -55,6 +55,10 @@ This project is the last project of Udacity Full Stack Web Developer Nanodegree 
         sudo ufw status<br/>
 5. Configure the local timezone to UTC
     * sudo dpkg-reconfigure tzdata
+6. Remove remote access for root:
+    * in /etc/ssh/sshd_config, make following changes:
+        PermitRootLogin no<br/>
+        AllowUsers grader<br/><br/>
 6. Install following packages/libraries:
     * sudo apt-get install apache2
     * sudo apt install python2.7 python-pip
@@ -95,6 +99,7 @@ This project is the last project of Udacity Full Stack Web Developer Nanodegree 
                 Allow from all <br/>
             </Directory><br/>
         </VirtualHost>
+    * Update and put full path of client_secrets.json in the main program file, and update app.run(0.0.0.0, port=8000) to app.run()
 11. restart Apache:
     * sudo service apache2 restart
 
