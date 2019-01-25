@@ -6,7 +6,7 @@ This project is the last project of Udacity Full Stack Web Developer Nanodegree 
 2. SSH Port: 2200
 
 ## URL to the hosted web application
-    http://34.197.172.98:2200/catalog
+    http://34.197.172.98
 
 ## Software installed
 1. Apache2
@@ -56,10 +56,10 @@ This project is the last project of Udacity Full Stack Web Developer Nanodegree 
 5. Configure the local timezone to UTC
     * sudo dpkg-reconfigure tzdata
 6. Remove remote access for root:
-    * in /etc/ssh/sshd_config, make following changes:
+    * in /etc/ssh/sshd_config, make following changes:</br>
         PermitRootLogin no<br/>
         AllowUsers grader<br/><br/>
-6. Install following packages/libraries:
+7. Install following packages/libraries:
     * sudo apt-get install apache2
     * sudo apt install python2.7 python-pip
     * sudo apt-get install libapache2-mod-wsgi-py3
@@ -70,15 +70,15 @@ This project is the last project of Udacity Full Stack Web Developer Nanodegree 
     * sudo pip install flask_httpauth
     * sudo pip install oauth2client
     * sudo pip install requests
-7. Git clone the catalog project to the server and move it to /var/www/html/catalog
-8. Create database catalogMngr:
+8. Git clone the catalog project to the server and move it to /var/www/html/catalog
+9. Create database catalogMngr:
     * sudo -u postgres createuser -P catalog (password catalog)
     * create an empty database catalogMngr:
     * sudo -u postgres createdb -O catalog catalogMngr
     * connect to catalogMngr: sudo -u postgres psql catalogMngr
     * postgres=# grant all privileges on database catalogMngr to catalog;
-9. Run db_setup.py and insert_data.py to create tables and populate data in the tables
-10. Deploy catalogMng to apache:
+10. Run db_setup.py and insert_data.py to create tables and populate data in the tables
+11. Deploy catalogMng to apache:
     * Create app.wsgi:
         #!/usr/bin/python<br/>
         import sys<br/>
@@ -100,7 +100,7 @@ This project is the last project of Udacity Full Stack Web Developer Nanodegree 
             </Directory><br/>
         </VirtualHost>
     * Update and put full path of client_secrets.json in the main program file, and update app.run(0.0.0.0, port=8000) to app.run()
-11. restart Apache:
+12. restart Apache:
     * sudo service apache2 restart
 
 ## Acknowledgements & Reference
