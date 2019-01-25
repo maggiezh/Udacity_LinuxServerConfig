@@ -25,19 +25,22 @@ This project is the last project of Udacity Full Stack Web Developer Nanodegree 
     * update ubuntu to grader in /etc/sudoers.d/grader
     * sudo vi /etc/ssh/sshd_config to update the line "PasswordAuthentication no" to "PasswordAuthentication yes"
     * Generate key pairs: sudo ssh-keygen, save the key files to ~/.ssh/linuxCourse and linuxCourse.pub
-    * open a command prompt window, ssh grader@54.158.50.36 -p 22
+    * open a command prompt window, ssh grader@34.194.172.98 -p 22
       in command prompt window, mkdir .ssh
     * create the key file in grader account: touch .ssh/authorized_keys
-    * copy paste the keys from ubuntu account into the key files in grader account:
+    * copy paste the public key from ubuntu account into the key files in grader account:
         I. sudo cp /root/.ssh/linuxCourse.pub /home/grader/.ssh/authorized_keys
         II. chown -R grader:grader .ssh
         III. chmod 700 .ssh
         IV. chmod 644 .ssh/authorized_keys
-    * login to server using the key pair and the passphrase:
-        sudo ssh grader@54.158.50.36 -p 22 -i /root/.ssh/linuxCourse
+    * login to server using the private key and the passphrase:
+        sudo ssh grader@34.194.172.98 -p 22 -i /root/.ssh/linuxCourse
 3. Change the SSH port from 22 to 2200:
     * sudo vi /etc/ssh/sshd_config
     * update the port number from 22 to 2200 in /etc/ssh/sshd_config.
+    * restart ssh: sudo service ssh restart
+    * use following command to login to the server:
+        sudo ssh grader@34.194.172.98 -p 2200 -i /root/.ssh/linuxCourse
 4. Configure the Uncomplicated Firewall (UFW) to only allow incoming connections for SSH (port 2200),        HTTP (port 80), and NTP (port 123).
     * Deny incoming traffic, open outgoing traffic<br/>
         sudo ufw default deny incoming<br/>
@@ -87,10 +90,10 @@ This project is the last project of Udacity Full Stack Web Developer Nanodegree 
             WSGIScriptAlias /catalog /var/www/html/catalog/app.wsgi<br/>
             WSGIProcessGroup catalog<br/><br/>
             <Directory /var/www/html/catalog> <br/>
-            WSGIApplicationGroup %{GLOBAL} <br/>
-            Order deny,allow <br/>
-            Allow from all <br/>
-            </Directory><br/><br/>
+                WSGIApplicationGroup %{GLOBAL} <br/>
+                Order deny,allow <br/>
+                Allow from all <br/>
+            </Directory><br/>
         </VirtualHost>
 11. restart Apache:
     * sudo service apache2 restart
