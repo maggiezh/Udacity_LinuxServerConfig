@@ -43,13 +43,13 @@ This project is the last project of Udacity Full Stack Web Developer Nanodegree 
         sudo ufw default deny incoming<br/>
         sudo ufw default allow outgoing<br/>
     * Open incoming connections for ssh, http and ntp:
-        sudo ufw allow 2200/tcp
-        sudo ufw allow www
-        sudo ufw allow ntp
+        sudo ufw allow 2200/tcp<br/>
+        sudo ufw allow www<br/>
+        sudo ufw allow ntp<br/>
     * Turn on the firewall:
-        sudo ufw enable
+        sudo ufw enable<br/>
     * Check firewall status and confirm the rules setup:
-        sudo ufw status
+        sudo ufw status<br/>
 5. Configure the local timezone to UTC
     * sudo dpkg-reconfigure tzdata
 6. Install following packages/libraries:
@@ -73,26 +73,25 @@ This project is the last project of Udacity Full Stack Web Developer Nanodegree 
 9. Run db_setup.py and insert_data.py to create tables and populate data in the tables
 10. Deploy catalogMng to apache:
     * Create app.wsgi:
-        #!/usr/bin/python
-        import sys
-        import logging
-        logging.basicConfig(stream=sys.stderr)
-        sys.path.insert(0, '/var/www/html/catalog')
-
-        from application import app as application
-        application.secret_key = 'super_secret_key'
-
+        #!/usr/bin/python<br/>
+        import sys<br/>
+        import logging<br/>
+        logging.basicConfig(stream=sys.stderr)<br/>
+        sys.path.insert(0, '/var/www/html/catalog')<br/><br/>
+        from application import app as application<br/>
+        application.secret_key = 'super_secret_key'<br/><br/>
     * Configure Apache for the application:
-        in /etc/apache2/sites-enabled/000-default.conf, adding following code right before </VirtualHost>:
-            WSGIDaemonProcess catalog user=grader group=grader threads=5
-            WSGIScriptAlias /catalog /var/www/html/catalog/app.wsgi
-            WSGIProcessGroup catalog
-
-            <Directory /var/www/html/catalog>
-            WSGIApplicationGroup %{GLOBAL}
-            Order deny,allow
-            Allow from all
-            </Directory>
+        in /etc/apache2/sites-enabled/000-default.conf, adding following code right before :<br/>
+        <VirtualHost>
+            WSGIDaemonProcess catalog user=grader group=grader threads=5<br/>
+            WSGIScriptAlias /catalog /var/www/html/catalog/app.wsgi<br/>
+            WSGIProcessGroup catalog<br/><br/>
+            <Directory /var/www/html/catalog> <br/>
+            WSGIApplicationGroup %{GLOBAL} <br/>
+            Order deny,allow <br/>
+            Allow from all <br/>
+            </Directory><br/><br/>
+        </VirtualHost>
 11. restart Apache:
     * sudo service apache2 restart
 
