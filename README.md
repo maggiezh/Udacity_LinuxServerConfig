@@ -1,22 +1,23 @@
 # Udacity_LinuxServerConfig
 This project is the last project of Udacity Full Stack Web Developer Nanodegree Program. It is to configure a bare bones linux server to secure and efficient web application host a web application.
 
-# Server's IP address and SSH port
+## Server's IP address and SSH port
 1. Server's IP: 34.194.172.98
 2. SSH Port: 2200
 
-# URL to the hosted web application
+## URL to the hosted web application
 
-# Software installed
+## Software installed
 1. Apache2
 2. Git
 3. Python2.7
 4. libapache2-mod-wsgi-py
 5. postgresql
 
-# Configuratin changes
+## Configuratin changes
 1. Update all currently installed packages:
-    sudo apt-get update34.194.172.98
+
+    sudo apt-get update
     sudo apt-get upgrade
 2. Create a new user account, grader and give it the permission to sudo
     sudo adduser grader
@@ -67,6 +68,7 @@ This project is the last project of Udacity Full Stack Web Developer Nanodegree 
     sudo -u postgres createuser -P catalog (password catalog)
     create am empty database catalogMngr:
     sudo -u postgres createdb -O catalog catalogMngr
+    connect to catalogMngr: sudo -u postgres psql catalogMngr
     postgres=# grant all privileges on database catalogMngr to catalog;
 9. Run db_setup.py and insert_data.py to create tables and populate data in the tables
 10. Deploy catalogMng to apache:
@@ -92,6 +94,15 @@ This project is the last project of Udacity Full Stack Web Developer Nanodegree 
     </Directory>
 11. restart Apache:
     sudo service apache2 restart
+
+## Acknowledgements & Reference
+
+1. https://github.com/SteveWooding/fullstack-nanodegree-linux-server-config
+2. https://github.com/bad2thuhbone/Linux-Server-Project-6
+3. https://help.ubuntu.com/community/PostgreSQL
+4. https://code.google.com/archive/p/modwsgi/wikis/ConfigurationDirectives.wiki
+
+
 
     
             
