@@ -6,6 +6,7 @@ This project is the last project of Udacity Full Stack Web Developer Nanodegree 
 2. SSH Port: 2200
 
 ## URL to the hosted web application
+    ### http://34.197.172.98:2200/catalog
 
 ## Software installed
 1. Apache2
@@ -16,9 +17,8 @@ This project is the last project of Udacity Full Stack Web Developer Nanodegree 
 
 ## Configuratin changes
 1. Update all currently installed packages:
-
-    sudo apt-get update
-    sudo apt-get upgrade
+    * sudo apt-get update
+    * sudo apt-get upgrade
 2. Create a new user account, grader and give it the permission to sudo
     sudo adduser grader
     sudo cp /etc/sudoers.d/90-cloud-init-users /etc/sudoers.d/grader
@@ -96,7 +96,6 @@ This project is the last project of Udacity Full Stack Web Developer Nanodegree 
     sudo service apache2 restart
 
 ## Acknowledgements & Reference
-
 1. https://github.com/SteveWooding/fullstack-nanodegree-linux-server-config
 2. https://github.com/bad2thuhbone/Linux-Server-Project-6
 3. https://help.ubuntu.com/community/PostgreSQL
