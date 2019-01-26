@@ -79,8 +79,8 @@ This project is the last project of Udacity Full Stack Web Developer Nanodegree 
     * postgres=# grant all privileges on database catalogMngr to catalog;
 10. Run db_setup.py and insert_data.py to create tables and populate data in the tables
 11. Deploy catalogMng to apache:
-    * Create app.wsgi:
-        #!/usr/bin/python<br/>
+    * Create app.wsgi:<br/>
+        #!/usr/bin/python <br/>
         import sys<br/>
         import logging<br/>
         logging.basicConfig(stream=sys.stderr)<br/>
@@ -89,7 +89,7 @@ This project is the last project of Udacity Full Stack Web Developer Nanodegree 
         application.secret_key = 'super_secret_key'<br/><br/>
     * Configure Apache for the application:
         in /etc/apache2/sites-enabled/000-default.conf, adding following code right before :<br/>
-        <VirtualHost>
+        &lt;VirtualHost&gt;
             WSGIDaemonProcess catalog user=grader group=grader threads=5<br/>
             WSGIScriptAlias /catalog /var/www/html/catalog/app.wsgi<br/>
             WSGIProcessGroup catalog<br/><br/>
