@@ -15,7 +15,7 @@ This project is the last project of Udacity Full Stack Web Developer Nanodegree 
 4. libapache2-mod-wsgi-py
 5. postgresql
 
-## Configuratin changes34
+## Configuration changes
 1. Update all currently installed packages:
     * sudo apt-get update
     * sudo apt-get upgrade
@@ -35,7 +35,7 @@ This project is the last project of Udacity Full Stack Web Developer Nanodegree 
         IV. chmod 644 .ssh/authorized_keys
     * login to server using the private key and the passphrase:
         sudo ssh grader@34.194.172.98 -p 22 -i /root/.ssh/linuxCourse
-3. Change the SSH port from 22 to 2200, before testing the access via 2200, don't delete port 22
+3. Change the SSH port from 22 to 2200
     * sudo vi /etc/ssh/sshd_config
     * update the port number from 22 to 2200 in /etc/ssh/sshd_config.
     * restart ssh: sudo service ssh restart
@@ -58,7 +58,7 @@ This project is the last project of Udacity Full Stack Web Developer Nanodegree 
 6. Remove remote access for root:
     * in /etc/ssh/sshd_config, make following changes:</br>
         PermitRootLogin no<br/>
-        AllowUsers grader<br/><br/>
+        AllowUsers grader<br/>
 7. Install following packages/libraries:
     * sudo apt-get install apache2
     * sudo apt install python2.7 python-pip
@@ -84,11 +84,12 @@ This project is the last project of Udacity Full Stack Web Developer Nanodegree 
         import sys<br/>
         import logging<br/>
         logging.basicConfig(stream=sys.stderr)<br/>
-        sys.path.insert(0, '/var/www/html/catalog')<br/><br/>
+        sys.path.insert(0, '/var/www/html/catalog')<br/>
         from application import app as application<br/>
-        application.secret_key = 'super_secret_key'<br/><br/>
+        application.secret_key = 'super_secret_key'<br/>
     * Configure Apache for the application:
-        in /etc/apache2/sites-enabled/000-default.conf, adding following code right before :<br/>
+        in /etc/apache2/sites-enabled/000-default.conf, adding following code right before 
+        &lt;/VirtualHost&gt;:<br/>
         &lt;VirtualHost&gt;<br/>
             WSGIDaemonProcess catalog user=grader group=grader threads=5<br/>
             WSGIScriptAlias /catalog /var/www/html/catalog/app.wsgi<br/>
@@ -101,7 +102,7 @@ This project is the last project of Udacity Full Stack Web Developer Nanodegree 
         &lt;/VirtualHost&gt;<br/>
     * Update and put full path of client_secrets.json in the main program file, and update app.run(0.0.0.0, port=8000) to app.run()
     * Add the server IP to Authorized JavaScript origins in console.develpers.google.com, and client_secrets.json
-    * The google authentication can not be completed because IP address is not accepted in Google APIs.
+    * The google authentication can not be completed because IP address is not accepted in Google APIs as Authorized redirect URIs.
     * check /var/log/apache2/error.log for apache server errors
 12. restart Apache:
     * sudo service apache2 restart
