@@ -93,12 +93,12 @@ This project is the last project of Udacity Full Stack Web Developer Nanodegree 
             WSGIDaemonProcess catalog user=grader group=grader threads=5<br/>
             WSGIScriptAlias /catalog /var/www/html/catalog/app.wsgi<br/>
             WSGIProcessGroup catalog<br/><br/>
-            &lt;Directory /var/www/html/catalog&gt <br/>
+            &lt;Directory /var/www/html/catalog&gt; <br/>
                 WSGIApplicationGroup %{GLOBAL} <br/>
                 Order deny,allow <br/>
                 Allow from all <br/>
-            &lt;/Directory&gt<br/>
-        </VirtualHost>
+            &lt;/Directory&gt;<br/>
+        &lt;/VirtualHost&gt;
     * Update and put full path of client_secrets.json in the main program file, and update app.run(0.0.0.0, port=8000) to app.run()
     * Add the server IP to Authorized JavaScript origins in console.develpers.google.com, and client_secrets.json
     * The google authentication can not be completed because IP address is not accepted in Google APIs.
