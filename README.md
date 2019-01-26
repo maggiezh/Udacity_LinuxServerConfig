@@ -15,7 +15,7 @@ This project is the last project of Udacity Full Stack Web Developer Nanodegree 
 4. libapache2-mod-wsgi-py
 5. postgresql
 
-## Configuratin changes
+## Configuratin changes34
 1. Update all currently installed packages:
     * sudo apt-get update
     * sudo apt-get upgrade
@@ -93,13 +93,16 @@ This project is the last project of Udacity Full Stack Web Developer Nanodegree 
             WSGIDaemonProcess catalog user=grader group=grader threads=5<br/>
             WSGIScriptAlias /catalog /var/www/html/catalog/app.wsgi<br/>
             WSGIProcessGroup catalog<br/><br/>
-            <Directory /var/www/html/catalog> <br/>
+            &lt;Directory /var/www/html/catalog&gt <br/>
                 WSGIApplicationGroup %{GLOBAL} <br/>
                 Order deny,allow <br/>
                 Allow from all <br/>
-            </Directory><br/>
+            &lt;/Directory&gt<br/>
         </VirtualHost>
     * Update and put full path of client_secrets.json in the main program file, and update app.run(0.0.0.0, port=8000) to app.run()
+    * Add the server IP to Authorized JavaScript origins in console.develpers.google.com, and client_secrets.json
+    * The google authentication can not be completed because IP address is not accepted in Google APIs.
+    * check /var/log/apache2/error.log for apache server errors
 12. restart Apache:
     * sudo service apache2 restart
 
